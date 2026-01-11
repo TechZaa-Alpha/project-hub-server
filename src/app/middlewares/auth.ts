@@ -27,7 +27,7 @@ const auth = (...roles: Role[]) => {
       if (!isUserExist) {
         throw new AppError("Account not found !", 404);
       }
-      req.user = verifiedUser as JwtPayloadType;
+      req.user = {...verifiedUser, accountId: isUserExist._id} as JwtPayloadType;
       next();
     } catch (err) {
       next(err);

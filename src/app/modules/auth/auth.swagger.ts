@@ -32,9 +32,9 @@ export const authSwaggerDocs = {
 
   "/api/auth/login": {
     post: {
-      tags: ["Auth"],
+      tags: ["AUTH API"],
       summary: "Login a user",
-      description: "Authenticate user with email and password.",
+      description: "AUTH APIenticate user with email and password.",
       requestBody: {
         required: true,
         content: {
@@ -43,8 +43,11 @@ export const authSwaggerDocs = {
               type: "object",
               required: ["email", "password"],
               properties: {
-                email: { type: "string", example: "user@example.com" },
-                password: { type: "string", example: "secret123" },
+                email: {
+                  type: "string",
+                  example: "softvence.abumahid@gmail.com",
+                },
+                password: { type: "string", example: "123456" },
               },
             },
           },
@@ -59,10 +62,10 @@ export const authSwaggerDocs = {
 
   "/api/auth/me": {
     get: {
-      tags: ["Auth"],
+      tags: ["AUTH API"],
       summary: "Get logged-in user's profile",
       description: "Fetch the authenticated user's profile details.",
-      security: [{ bearerAuth: [] }],
+      security: [{ bearAuth: [] }],
       responses: {
         200: { description: "Profile data retrieved successfully" },
         401: { description: "Unauthorized" },
@@ -70,23 +73,11 @@ export const authSwaggerDocs = {
     },
   },
 
-  "/api/auth/refresh-token": {
-    post: {
-      tags: ["Auth"],
-      summary: "Refresh JWT token",
-      description: "Refresh the access token using a valid refresh token.",
-      responses: {
-        200: { description: "Token refreshed successfully" },
-        401: { description: "Invalid or expired refresh token" },
-      },
-    },
-  },
-
   "/api/auth/change-password": {
     post: {
-      tags: ["Auth"],
+      tags: ["AUTH API"],
       summary: "Change password (authenticated users)",
-      security: [{ bearerAuth: [] }],
+      security: [{ bearAuth: [] }],
       requestBody: {
         required: true,
         content: {
@@ -111,7 +102,7 @@ export const authSwaggerDocs = {
 
   "/api/auth/forgot-password": {
     post: {
-      tags: ["Auth"],
+      tags: ["AUTH API"],
       summary: "Request password reset",
       requestBody: {
         required: true,
@@ -136,7 +127,7 @@ export const authSwaggerDocs = {
 
   "/api/auth/reset-password": {
     post: {
-      tags: ["Auth"],
+      tags: ["AUTH API"],
       summary: "Reset password using token",
       description:
         "Reset the user's password using a valid token sent to their email.",
@@ -159,58 +150,6 @@ export const authSwaggerDocs = {
       responses: {
         200: { description: "Password reset successfully" },
         400: { description: "Invalid or expired token" },
-      },
-    },
-  },
-
-  "/api/auth/verified-account": {
-    post: {
-      tags: ["Auth"],
-      summary: "Verify account using token",
-      description: "Verify a user's email account using a verification token.",
-      requestBody: {
-        required: true,
-        content: {
-          "application/json": {
-            schema: {
-              type: "object",
-              required: ["token"],
-              properties: {
-                token: { type: "string", example: "eyJhbGciOiJIUzI1NiIs..." },
-              },
-            },
-          },
-        },
-      },
-      responses: {
-        200: { description: "Account verified successfully" },
-        400: { description: "Invalid or expired token" },
-      },
-    },
-  },
-
-  "/api/auth/new-verification-link": {
-    post: {
-      tags: ["Auth"],
-      summary: "Request a new verification link",
-      description: "Send a new verification link to the user's email address.",
-      requestBody: {
-        required: true,
-        content: {
-          "application/json": {
-            schema: {
-              type: "object",
-              required: ["email"],
-              properties: {
-                email: { type: "string", example: "user@example.com" },
-              },
-            },
-          },
-        },
-      },
-      responses: {
-        200: { description: "Verification link resent successfully" },
-        404: { description: "User not found or already verified" },
       },
     },
   },

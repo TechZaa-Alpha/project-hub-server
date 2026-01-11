@@ -4,6 +4,7 @@ import httpStatus from "http-status";
 import { JwtPayload, Secret } from "jsonwebtoken";
 import mongoose from "mongoose";
 import { configs } from "../../configs";
+import { welcome } from "../../templates/welcom";
 import { AppError } from "../../utils/app_error";
 import { isAccountExist } from "../../utils/isAccountExist";
 import { jwtHelpers } from "../../utils/JWT";
@@ -58,6 +59,14 @@ const register_user_into_db = async (payload: TRegisterPayload) => {
       { session }
     );
     await session.commitTransaction();
+    await sendMail({
+      to: payload.email,
+      subject: "Account created successfully!",
+      textBody: "Your account is successfully created.",
+      htmlBody: welcome(
+        `${payload?.organizationName} (${payload?.organizationAdminName})`
+      ),
+    });
     return newAccount;
   } catch (error) {
     await session.abortTransaction();
@@ -111,8 +120,6 @@ const get_my_profile_from_db = async (req: Request) => {
     profile: accountProfile,
   };
 };
-
-
 
 const change_password_from_db = async (
   user: JwtPayload,
@@ -199,12 +206,11 @@ const reset_password_into_db = async (
   return "Password reset successfully!";
 };
 
-
 export const auth_services = {
   register_user_into_db,
   login_user_from_db,
   get_my_profile_from_db,
   change_password_from_db,
   forget_password_from_db,
-  reset_password_into_db
+  reset_password_into_db,
 };
