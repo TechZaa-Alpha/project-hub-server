@@ -99,10 +99,11 @@ const assigned_member_into_group_into_db = async (req: Request) => {
   const accountId = req?.user?.accountId;
   const projectId = req?.params?.projectId;
   const members = req?.body?.members;
-
-  if (!Array.isArray(members) || members.length === 0) {
-    throw new Error("Members must be a non-empty array");
+  if (!Array.isArray(members)) {
+    throw new Error("Members must be an array");
   }
+
+  const objectIds = members.map((id) => new Types.ObjectId(id));
 
   const result = await project_model.findOneAndUpdate(
     {
@@ -110,10 +111,8 @@ const assigned_member_into_group_into_db = async (req: Request) => {
       orgIdAccountId: new Types.ObjectId(accountId),
     },
     {
-      $addToSet: {
-        assignedUsers: {
-          $each: members.map((id: string) => new Types.ObjectId(id)),
-        },
+      $set: {
+        assignedUsers: objectIds,
       },
     },
     { new: true }

@@ -1,14 +1,17 @@
 import { model, Schema } from "mongoose";
 import { TUser } from "./user.interface";
 
-const user_schema = new Schema<TUser>({
+const user_schema = new Schema<TUser>(
+  {
     name: { type: String, required: true },
     photo: { type: String, required: false },
+    orgAccountId: { type: String, required: false, ref: "account" },
     accountId: { type: String, required: false, ref: "account" },
-}, {
+  },
+  {
     versionKey: false,
-    timestamps: true
-})
+    timestamps: true,
+  }
+);
 
-
-export const User_Model = model("user", user_schema)
+export const User_Model = model("user", user_schema);
