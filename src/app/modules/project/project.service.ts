@@ -85,9 +85,10 @@ const get_single_project_from_db = async (req: Request) => {
 
 const update_project_into_db = async (req: Request) => {
   const accountId = req?.user?.accountId;
+  const projectId = req?.params?.projectId;
   const body = req?.body;
   const result = await project_model.findOneAndUpdate(
-    { orgIdAccountId: accountId },
+    { orgIdAccountId: accountId, _id: projectId },
     body,
     { new: true }
   );
@@ -169,5 +170,5 @@ export const project_service = {
   update_project_into_db,
   assigned_member_into_group_into_db,
   remove_member_from_group_from_db,
-  delete_project_from_db
+  delete_project_from_db,
 };

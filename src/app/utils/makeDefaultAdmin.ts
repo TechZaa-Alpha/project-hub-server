@@ -27,10 +27,9 @@ export const makeDefaultAdmin = async () => {
     const profileRes = await User_Model.create(
       [
         {
-          firstName: "Admin",
-          lastName: "admin",
+          name: "Md Abumahid Islam",
           accountId: accountRes[0]._id,
-          profile_photo:
+          photo:
             "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
         },
       ],

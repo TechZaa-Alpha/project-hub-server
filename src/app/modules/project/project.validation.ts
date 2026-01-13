@@ -14,15 +14,15 @@ const create = z.object({
 
   progress: z.number().min(0).max(100).optional(),
 
-  figmaLink: z.string().url().optional(),
-  frontendLiveLink: z.string().url().optional(),
-  backendLiveLink: z.string().url().optional(),
-  aiLiveLink: z.string().url().optional(),
-  erdLink: z.string().url().optional(),
+  figmaLink: z.string().optional(),
+  frontendLiveLink: z.string().optional(),
+  backendLiveLink: z.string().optional(),
+  aiLiveLink: z.string().optional(),
+  erdLink: z.string().optional(),
 
-  frontendGitRepoLink: z.string().url().optional(),
-  backendGitRepoLink: z.string().url().optional(),
-  aiGitRepoLink: z.string().url().optional(),
+  frontendGitRepoLink: z.string().optional(),
+  backendGitRepoLink: z.string().optional(),
+  aiGitRepoLink: z.string().optional(),
 
   notes: z.string().optional(),
 
@@ -35,4 +35,4 @@ const member = z.object({
   members: z.array(z.string()),
 });
 
-export const project_validations = { create ,member};
+export const project_validations = { create, member };
