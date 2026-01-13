@@ -16,7 +16,11 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:8080"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:8080",
+      "https://projecthub-pi.vercel.app",
+    ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     credentials: true,
   })

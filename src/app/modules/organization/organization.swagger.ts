@@ -57,4 +57,26 @@ export const organizationSwaggerDocs = {
       },
     },
   },
+  "/api/organization/dashboard-overview": {
+    get: {
+      tags: ["ORGANIZATION API"],
+      summary: "Get dashboard overview - (Only for Organization)",
+      description: "",
+      responses: {
+        200: { description: "Overview fetched successfully" },
+        400: { description: "Validation error" },
+      },
+    },
+  },
+  "/api/organization/get-common-project": {
+    get: {
+      tags: ["ORGANIZATION API"],
+      summary: "Get common project - (Only for Organization || User)",
+      description: "",
+      responses: {
+        200: { description: "Projects fetched successfully" },
+        400: { description: "Validation error" },
+      },
+    },
+  },
 };

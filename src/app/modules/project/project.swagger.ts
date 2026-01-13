@@ -101,18 +101,7 @@ export const projectSwaggerDocs = {
                 notes: {
                   type: "string",
                   example: "Initial project setup completed.",
-                },
-                orgIdAccountId: {
-                  type: "string",
-                  example: "65a4c2e2f1d9b7c8a1234567",
-                },
-                assignedUsers: {
-                  type: "array",
-                  items: {
-                    type: "string",
-                    example: "65a4c2e2f1d9b7c8a7654321",
-                  },
-                },
+                }
               },
             },
           },
@@ -294,18 +283,7 @@ export const projectSwaggerDocs = {
                 notes: {
                   type: "string",
                   example: "Initial project setup completed.",
-                },
-                orgIdAccountId: {
-                  type: "string",
-                  example: "65a4c2e2f1d9b7c8a1234567",
-                },
-                assignedUsers: {
-                  type: "array",
-                  items: {
-                    type: "string",
-                    example: "65a4c2e2f1d9b7c8a7654321",
-                  },
-                },
+                }
               },
             },
           },

@@ -4,7 +4,7 @@ export const invitation = ({
   orgName,
   email,
   password,
-  name
+  name,
 }: {
   orgName: string;
   email: string;
@@ -49,7 +49,7 @@ export const invitation = ({
 
         <!-- Button -->
         <div style="text-align:center;margin-bottom:32px;">
-          <a href="${configs.jwt.front_end_url}/login"
+          <a href="${configs.jwt.front_end_url}/auth"
              style="display:inline-block;padding:12px 28px;
                     font-size:14px;font-weight:600;
                     color:#ffffff;background-color:#2563eb;

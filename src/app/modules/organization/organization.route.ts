@@ -22,5 +22,15 @@ organization_router.delete(
   auth("ORGANIZATION"),
   organization_controller.remove_member_from_organization
 );
+organization_router.get(
+  "/dashboard-overview",
+  auth("ORGANIZATION"),
+  organization_controller.get_dashboard_overview
+);
+organization_router.get(
+  "/get-common-project",
+  auth("ORGANIZATION","USER"),
+  organization_controller.get_all_common_project_for_user_organization
+);
 
 export default organization_router;

@@ -5,10 +5,12 @@ import { User_Model } from "../modules/user/user.schema";
 
 export const makeDefaultAdmin = async () => {
   const isAdminExist = await Account_Model.findOne({
-    role: "ADMIN",
-    isDeleted: false,
+    role: "ADMIN"
   });
-  if (isAdminExist) return;
+  if (isAdminExist) {
+    console.log("Admin already exist!!");
+    return;
+  }
 
   const session = await Account_Model.startSession();
   session.startTransaction();
