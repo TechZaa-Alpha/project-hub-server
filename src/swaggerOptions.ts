@@ -22,8 +22,8 @@ export const swaggerOptions = {
     },
     servers:
       configs.env === "production"
-        ? [{ url: "https://live-url.com" }, { url: "http://localhost:5000" }]
-        : [{ url: "http://localhost:5000" }, { url: "https://live-url.com" }],
+        ? [{ url: "https://test-9xcp.onrender.com" }, { url: "http://localhost:5000" }]
+        : [{ url: "http://localhost:5000" }, { url: "https://test-9xcp.onrender.com" }],
     components: {
       securitySchemes: {
         AuthorizationToken: {
