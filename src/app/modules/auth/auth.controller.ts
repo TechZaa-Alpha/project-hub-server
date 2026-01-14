@@ -20,7 +20,7 @@ const login_user = catchAsync(async (req, res) => {
   res.cookie("accessToken", result.accessToken, {
     secure: configs.env == "production",
     httpOnly: true,
-    sameSite: "none",
+    sameSite: configs.env == "production" ? "none" : "lax",
   });
   manageResponse(res, {
     statusCode: httpStatus.OK,
@@ -42,8 +42,6 @@ const get_my_profile = catchAsync(async (req, res) => {
     data: result,
   });
 });
-
-
 
 const change_password = catchAsync(async (req, res) => {
   const user = req?.user;
@@ -89,5 +87,5 @@ export const auth_controllers = {
   get_my_profile,
   change_password,
   reset_password,
-  forget_password
+  forget_password,
 };

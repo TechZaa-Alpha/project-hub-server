@@ -252,7 +252,7 @@ const get_all_common_project_for_user_organization_from_db = async (
   if (role === "ORGANIZATION") {
     result = await project_model
       .find({
-        orgAccountId: accountId,
+        orgIdAccountId: accountId,
         status: { $in: ["RUNNING", "REVISION"] },
       })
       .lean();
