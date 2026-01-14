@@ -20,6 +20,7 @@ const login_user = catchAsync(async (req, res) => {
   res.cookie("accessToken", result.accessToken, {
     secure: configs.env == "production",
     httpOnly: true,
+    sameSite: "none",
   });
   manageResponse(res, {
     statusCode: httpStatus.OK,
